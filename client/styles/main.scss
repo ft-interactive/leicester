@@ -188,7 +188,7 @@ svg {
 
 #ftlogo path{fill:#E2D7CE;stroke:none;}
 #viz{position:relative;width:800px;height:900px;}
-#graphic{position:absolute;width:800px;height:900px;}
+#graphic,#svgTop{position:absolute;width:800px;height:900px;}
 #backdrop{fill:#fff1e0;}
 
 text{cursor:default;font-size:12px;}
