@@ -9,6 +9,7 @@
     "bower": "^1.7.9",
     "browser-sync": "^2.11.2",
     "browserify": "^13.0.0",
+    "d3": "^3.5.17",
     "debowerify": "^1.4.1",
     "del": "^2.2.0",
     "eslint": "^2.7.0",
