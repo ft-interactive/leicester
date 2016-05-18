@@ -114,7 +114,7 @@ function downPos(frame,data){
 
 		var chartFrame = outer.append('div');
 
-		chartFrame.append('span').html(d.key.replace(/-/g,' ') + '-' + (d.values[0].values[0].Season+1).toString().substr(2,3));
+		chartFrame.append('span').html(d.key.replace(/-/g,' ') + '-' + (d.values[1].values[0].Season+1).toString().substr(2,3));
 
 		var	bounds = chartFrame.node().getBoundingClientRect(),
 		width = bounds.width-10,
@@ -369,7 +369,7 @@ function downPos(frame,data){
 					{	
 						key:highlight[0],
 						point:[38,10],
-						text:'Only Premier League winners to finish below 3rd in subsequent season',
+						text:'Only Premier League winners to finish below 7th in subsequent season',
 						textPoint:[-5,-80],
 						anchor:'end',
 						side:1

@@ -145,6 +145,7 @@ function runUp(frame,data){
 			d.max = d3.max(d.values,function(x){return x.rollingSum});
 			d.played = d3.max(d.values,function(x){return x.gamesIn});
 			d.start = d3.max(d.values,function(x){return x.start});
+			d.ppg = d.max/d.played;
 		});
 
 		data = data.sort(function(a,b){
@@ -366,6 +367,11 @@ function runUp(frame,data){
 				return a.dist - b.dist;
 			})[0];
 
+			if(point.dist > 8){
+				anchor.html('');
+				context2.clearRect(0,0,(plotW * devicePixelRatio),(plotH * devicePixelRatio));
+			}else{
+
 			anchor.html('')
 			.style({
 				left:x(point.played) + 'px',
@@ -376,7 +382,7 @@ function runUp(frame,data){
 				left:point.played > d3.mean(x.domain()) ? 'auto':0,
 				right:point.played > d3.mean(x.domain()) ? 0:'auto',
 			})
-			.html(point.key.replace(/-.*/g,'') + ' ' + point.values[0].date.getFullYear() + '&nbsp;-&nbsp;' + (point.values[(point.values.length-1)].Season+1).toString().substr(2,3));
+			.html(point.key.replace(/-.*/g,'') + ' ' + point.values[0].date.getFullYear() + '&nbsp;-&nbsp;' + (point.values[(point.values.length-1)].Season+1).toString().substr(2,3) + '<br><span class=claret>' + d3.format('.2f')(point.ppg) + '&nbsp;points/game</tspan>');
 
 			context2.clearRect(0,0,(plotW * devicePixelRatio),(plotH * devicePixelRatio));
 
@@ -404,6 +410,8 @@ function runUp(frame,data){
 			context2.fill();
 			context2.stroke();
 			context2.closePath();
+
+			}
 		})
 		.on('mouseleave', function(){
 			anchor.html('');

@@ -151,6 +151,10 @@ svg {
         opacity:0.8;
         padding:10px;
         border-radius:5px;
+        .claret {
+            color:#74736c;
+            font-size:0.8em;
+        }
     }
 }
 
@@ -241,6 +245,12 @@ span.footnote{
     }
     @media screen and (max-width: $small) {
         font-size:12px;
+    }
+}
+
+#readMore{
+    p {
+        padding-left:1em;
     }
 }
 

@@ -127,7 +127,8 @@ function runDown(frame,data){
 		        runID: d.runID,
 		        // start: parseDate(d.startDate),
 		        natPos: +d.natPos,
-		        ppg: +d.ppg
+		        ppg: +d.ppg,
+				Season: +d.Season
 		    }
 		});
 
@@ -362,6 +363,11 @@ function runDown(frame,data){
 				return a.dist - b.dist;
 			})[0];
 
+			if(point.dist > 8){
+				anchor.html('');
+				context2.clearRect(0,0,(plotW * devicePixelRatio),(plotH * devicePixelRatio));
+			}else{
+
 			anchor.html('')
 			.style({
 				left:x(point.played) + 'px',
@@ -372,7 +378,7 @@ function runDown(frame,data){
 				left:point.played > d3.mean(x.domain()) ? 'auto':0,
 				right:point.played > d3.mean(x.domain()) ? 0:'auto',
 			})
-			.html(point.key.replace(/-/g,' ') + '&nbsp;-&nbsp;' + (d3.format('02f')(+(point.key.substr(point.key.length-2,point.key.length))+1)));
+			.html(point.key.replace(/-/g,' ') + '&nbsp;-&nbsp;' + (d3.format('02f')(point.values[1].Season+1).toString().substr(2,3)) + '<br><span class=claret>' + d3.format('.2f')(point.ppg) + '&nbsp;points/game</tspan>');
 
 			context2.clearRect(0,0,(plotW * devicePixelRatio),(plotH * devicePixelRatio));
 
@@ -400,6 +406,8 @@ function runDown(frame,data){
 			context2.fill();
 			context2.stroke();
 			context2.closePath();
+
+			}
 		})
 		.on('mouseleave', function(){
 			anchor.html('');
